@@ -1,112 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishap Parmar - AI & ML Engineer</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rishap Parmar - AI Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-gradient {
+            background: linear-gradient(to right, #6b7280, #374151); /* Darker gradient */
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #f472b6, #8b5cf6); /* changed gradient */
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .shadow-lg {
+             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.06); /* Glassmorphism effect - more transparent*/
+            border-radius: 1rem;
+            backdrop-filter: blur(12px); /* Slightly stronger blur */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Refined shadow */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Add a border */
+        }
+        .card:hover {
+             transform: translateY(-6px); /* Stronger lift on hover */
+             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add shadow transition */
+             box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+        }
+
+        .glass-button {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 1rem;
+            padding: 0.8rem 1.6rem;
+            backdrop-filter: blur(12px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass-button:hover {
+            background-color: rgba(255, 255, 255, 0.15); /* Slightly brighter hover */
+            transform: translateY(-4px) scale(1.04); /* Stronger scale and lift */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+        }
+
+        .glass-button:active {
+            background-color: rgba(255, 255, 255, 0.06);
+            transform: translateY(0) scale(1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Rishap Parmar</h1>
-        <p>AI & ML Engineer | Educator | Innovator</p>
+<body class="bg-gradient text-white">
+    <header class="py-6 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gradient">Rishap Parmar</h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="#experience" class="text-gray-300 hover:text-white transition-colors duration-300">Experience</a></li>
+                    <li><a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
+                    <li><a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a></li>
+                    <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="hamburger-btn" class="md:hidden text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
     </header>
 
-    <nav>
-        <!-- Optional navigation menu -->
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Integrated M.Sc. in Artificial Intelligence and Machine Learning from Gujarat University with a passion for developing cutting-edge AI solutions. Experienced in teaching programming languages and working on innovative AI projects.
-        </p>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        
-        <div class="project">
-            <h3>AI-Powered Smart OCR</h3>
-            <p>
-                Developed an Optical Character Recognition (OCR) system using image processing and deep learning techniques. This AI-powered tool recognizes and extracts text from images and scanned documents with high accuracy.
-            </p>
-            <!-- <a href="link-to-project" target="_blank">View Project</a> -->
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
+        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
+            <div class="flex justify-end mb-4">
+                <button id="close-menu-btn" class="text-gray-300 focus:outline-none" aria-label="Close Menu">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="block">
+                <ul class="space-y-4">
+                    <li><a href="#about" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
+                    <li><a href="#experience" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Experience</a></li>
+                    <li><a href="#projects" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
+                    <li><a href="#skills" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Skills</a></li>
+                    <li><a href="#contact" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
+                </ul>
+            </nav>
         </div>
+    </div>
 
-        <div class="project">
-            <h3>Plant Diseases Detection & Classification</h3>
-            <p>
-                Created a computer vision model to detect and classify plant diseases, enabling farmers and researchers to quickly identify issues and take corrective actions. Utilized deep learning algorithms for accurate detection.
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section id="about" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://placehold.co/600x400/EEE/31343C" alt="Rishap Parmar" class="w-full h-auto object-cover" />
+                </div>
+                <p class="text-gray-300 leading-relaxed">
+                    Hello! I'm Rishap Parmar, an AI Engineer passionate about developing innovative solutions using cutting-edge technologies. With a strong background in machine learning, deep learning, and data engineering, I strive to create impactful products that solve real-world problems. I have experience in leading AI/ML product development, designing and training complex models, and optimizing data pipelines. I am also experienced in building and guiding collaborative teams, fostering innovation, and mentoring upcoming talents.
+                </p>
+            </div>
+        </section>
+
+        <section id="experience" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Experience</h2>
+            <div class="space-y-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-pink-400 mb-2">AI/ML Engineer</h3>  {/* Changed color here */}
+                    <p class="text-gray-400 mb-1">Advicon solution Pvt Ltd, Ahmedabad</p>
+                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
+                        <li>AI/ML Product Development: Oversaw end-to-end development of AI/ML products.</li>
+                        <li>Machine Learning Model Development: Designed, trained, and optimized deep learning and classical ML models.</li>
+                        <li>Data Engineering & Pipeline Optimization: Managed data preprocessing and pipeline optimization.</li>
+                         <li>Team Development & Mentorship: Built and guided a collaborative AI/ML team.</li>
+                        <li>MLOps & Scalable Deployment: Ensured seamless model deployment.</li>
+                        <li>Business & Product Strategy Collaboration: Worked with stakeholders to develop AI solutions.</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-pink-400 mb-2">Senior Programming Instructor</h3> {/* Changed color here */}
+                    <p class="text-gray-400 mb-1">C-DAC, Ahmedabad, India</p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Taught a wide range of programming languages and guided students in Machine Learning and Artificial Intelligence. Emphasized hands-on learning and real-world applications.
+                    </p>
+                </div>
+                 <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-pink-400 mb-2">Project Based Internship</h3> {/* Changed color here */}
+                    <p class="text-gray-400 mb-1">SAC - ISRO, Ahmedabad, India</p>
+                    <p class="text-gray-300 leading-relaxed">
+                       Conducted an analysis of Total Suspended Matter (TSM) in Gujarat's coastal waters using satellite remote sensing datasets.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Projects</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-blue-400 mb-2">LexiBot</h3>
+                    <p class="text-gray-300 mb-4">
+                        Intelligent document interaction using RAG, NLP, and LLMs.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
+                        <li>End-to-End AI/ML Pipeline</li>
+                        <li>Advanced NLP & Summarization</li>
+                        <li>Retrieval-Augmented Generation (RAG) Optimization</li>
+                        <li>Efficient Search & Indexing</li>
+                        <li>Scalable & Production-Ready Deployment</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-blue-400 mb-2">AgriVision</h3>
+                    <p class="text-gray-300 mb-4">
+                        Deep learning and image processing-based system for real-time identification of plant diseases.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
+                        <li>Image Preprocessing & Augmentation</li>
+                        <li>Disease Detection & Classification</li>
+                        <li>Segmentation & Feature Extraction</li>
+                         <li>Multi-Class Classification</li>
+                        <li>Deployment & Optimization</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-blue-400 mb-2">NeuroScan OCR</h3>
+                    <p class="text-gray-300 mb-4">
+                       Advanced OCR solution for real-time text recognition across scanned documents and images.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
+                        <li>Preprocessing & Image Enhancement</li>
+                        <li>Text Detection & Recognition</li>
+                        <li>Sequence Modeling</li>
+                        <li>Multilingual & Handwriting Recognition</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold text-blue-400 mb-2">AI-Driven Code Generation and Optimization</h3>
+                    <p class="text-gray-300 mb-4">
+                       Developed an NLP-powered automated code generation and refactoring system using LLMs
+                    </p>
+                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
+                        <li>Vector Embeddings & Graph Neural Networks (GNNs)</li>
+                        <li>Hidden Markov Models (HMMs), Variational Autoencoders (VAEs)</li>
+                        <li>Reinforcement Learning (DQN, MCTS)</li>
+                        <li>Static & Dynamic Analysis</li>
+                        <li>Seq2Seq models</li>
+                         <li>Performance Optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Programming Languages</h4>
+                    <ul class="list-disc list-inside text-gray-300">
+                        <li>Python, R</li>
+                        <li>C, C++, Core Java</li>
+                        <li>JavaScript, Basic HTML/CSS</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">AI/ML Technologies</h4>
+                    <ul class="list-disc list-inside text-gray-300">
+                         <li>Artificial Intelligence, Machine Learning, Deep Learning & Advanced Deep Learning, Natural Language Processing</li>
+                        <li>GenAI (LLM, RAG, Agentic AI)</li>
+                        <li>Computer Vision</li>
+                         <li>Image & Video preprocessing using Python module</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Python Modules</h4>
+                    <ul class="list-disc list-inside text-gray-300">
+                        <li>Numpy, Pandas, Matplotlib. Folium, Seaborn, Plotly, Geopandas</li>
+                        <li>Sklearn, Tensorflow, Keras, Pytorch, NLTK</li>
+                        <li>Database Connection, Beautiful Soup, request ,urllib, Flask, Django</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-blue-400 mb-2">BI & Other Tools</h4>
+                    <ul class="list-disc list-inside text-gray-300">
+                        <li>Tableau, Power BI</li>
+                        <li>Git, Weka, Microsoft Office</li>
+                         <li>MySQL, Hadoop, MongoDB, Pig, Hive, PostgreSQL</li>
+                         <li>Mcrosoft Power platform</li>
+                         <li>Basic of Cloud Computing, Networking, Advanced Algorithm, Database Management System, Data Structure, Advanced Mathematics, Statistics, Commercial & Scientific Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Contact</h2>
+            <p class="text-gray-300 text-lg mb-4">
+                Email: rishapparmar360@gmail.com | Phone: 8849638831 | Location: Ahmedabad, Gujarat
             </p>
-            <!-- <a href="link-to-project" target="_blank">View Project</a> -->
-        </div>
-
-        <div class="project">
-            <h3>Text to Code Using Python and NLP</h3>
-            <p>
-                Developed a natural language processing (NLP) model that automates code generation based on programmer commands. This tool helps programmers focus on conceptual development by reducing syntax errors.
+            <p class="text-gray-300 leading-relaxed">
+                I'm always open to discussing new opportunities and collaborations. Feel free to reach out to me!
             </p>
-            <!-- <a href="link-to-project" target="_blank">View Project</a> -->
-        </div>
+            <div class="mt-6">
+                <a href="mailto:rishapparmar360@gmail.com" class="glass-button mr-4">Email Me</a>
+                <a href="tel:8849638831" class="glass-button">Call Me</a>
+            </div>
+        </section>
+    </main>
 
-        <div class="project">
-            <h3>Data Analysis and Visualization on Ocean Minerals</h3>
-            <p>
-                Analyzed and visualized ocean mineral data from Gujarat and the Bay of Bengal's coastal areas using satellite remote sensing. Provided insights into mineral distribution and environmental factors affecting the region.
-            </p>
-            <!-- <a href="link-to-project" target="_blank">View Project</a> -->
-        </div>
-    </section>
-
-    <!-- Optional Experience Section -->
-    <section id="experience">
-        <h2>Experience</h2>
-
-        <div class="experience">
-            <h3>Senior Programming Instructor at C-DAC</h3>
-            <p>
-                Taught programming languages like Python, C++, Core Java, and introduced students to Machine Learning and Artificial Intelligence concepts.
-            </p>
-        </div>
-
-        <div class="experience">
-            <h3>Project Intern at SAC - ISRO</h3>
-            <p>
-                Analyzed total suspended matter in Gujarat coastal waters using satellite remote sensing datasets. Developed machine learning models for forecasting future scenarios.
-            </p>
-        </div>
-
-        <div class="experience">
-            <h3>Consultant at Stdio Consulting LLP</h3>
-            <p>
-                Leveraged Power Apps and Power Automate to develop custom applications and automate workflows, enhancing operational efficiency.
-            </p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:rishapparmar360@gmail.com">rishapparmar360@gmail.com</a></p>
-        <p>
-            <a href="https://github.com/yourusername" target="_blank">GitHub</a> | 
-            <a href="https://www.linkedin.com/in/rishap-parmar-bb59971b9" target="_blank">LinkedIn</a> | 
-            <a href="https://www.kaggle.com/rishapparmar" target="_blank">Kaggle</a>
-        </p>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Rishap Parmar</p>
+    <footer class="py-4 text-center bg-gray-800 rounded-t-lg shadow-md">
+        <p class="text-gray-400">© 2024 Rishap Parmar. All rights reserved.</p>
     </footer>
 
-    <script src="js/scripts.js"></script>
+    <script>
+        const hamburgerBtn = document.getElementById("hamburger-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuBtn = document.getElementById("close-menu-btn");
+        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle("hidden");
+             document.body.classList.toggle('overflow-hidden');
+        }
+
+        hamburgerBtn.addEventListener("click", toggleMobileMenu);
+        closeMenuBtn.addEventListener("click", toggleMobileMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener("click", toggleMobileMenu);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
+                toggleMobileMenu();
+            }
+        });
+
+        function updateActiveNavLink() {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === currentSectionId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
