@@ -1,334 +1,868 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rishap Parmar - AI Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@tailwindcss/browser@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishap Parmar - AI-ML</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        :root {
+            --bs-primary: #3b82f6;
+            --bs-secondary: #8b5cf6;
+            --bs-body-color: #1f2937;
+            --bs-body-bg: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+        }
+
+        [data-theme="dark"] {
+            --bs-body-color: #f9fafb;
+            --bs-body-bg: #0f172a;
+            --glass-bg: rgba(15, 23, 42, 0.3);
+            --glass-border: rgba(148, 163, 184, 0.2);
+            --text-primary: #f9fafb;
+            --text-secondary: #94a3b8;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-        }
-        .bg-gradient {
-            background: linear-gradient(to right, #6b7280, #374151); /* Darker gradient */
-        }
-        .text-gradient {
-            background: linear-gradient(to right, #f472b6, #8b5cf6); /* changed gradient */
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .shadow-lg {
-             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.5); /* Stronger shadow */
-        }
-        .card {
-            background-color: rgba(255, 255, 255, 0.06); /* Glassmorphism effect - more transparent*/
-            border-radius: 1rem;
-            backdrop-filter: blur(12px); /* Slightly stronger blur */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Refined shadow */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Add a border */
-        }
-        .card:hover {
-             transform: translateY(-6px); /* Stronger lift on hover */
-             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add shadow transition */
-             box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
         }
 
-        .glass-button {
-            background-color: rgba(255, 255, 255, 0.08);
-            border-radius: 1rem;
-            padding: 0.8rem 1.6rem;
-            backdrop-filter: blur(12px);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: url('https://readdy.ai/api/search-image?query=modern%20abstract%20geometric%20patterns%20with%20soft%20gradients%20and%20floating%20elements%20in%20blue%20and%20purple%20tones%2C%20minimal%20design%2C%20clean%20background%2C%20professional%20tech%20aesthetic%2C%20digital%20art%20style&width=1920&height=1080&seq=hero-bg&orientation=landscape') center/cover; */
+            opacity: 0.3;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 0.15em solid #3b82f6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 20%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #3b82f6
+            }
+        }
+
+        .skill-card:nth-child(odd) {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        .skill-card:nth-child(even) {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .glass-button:hover {
-            background-color: rgba(255, 255, 255, 0.15); /* Slightly brighter hover */
-            transform: translateY(-4px) scale(1.04); /* Stronger scale and lift */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+        .project-card:hover {
+            transform: translateY(-8px);
         }
 
-        .glass-button:active {
-            background-color: rgba(255, 255, 255, 0.06);
-            transform: translateY(0) scale(1);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        .btn-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
         }
 
-        #mobile-menu.active {
-            transform: translateX(0);
+        .btn-glass:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            color: var(--text-primary);
         }
 
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%);
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .navbar {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .form-control {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+        }
+
+        .form-control:focus {
+            background: var(--glass-bg);
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+            color: var(--text-primary);
+        }
+
+        .form-control::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .social-link {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            color: var(--text-primary);
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+
+            .hero-bg {
+                min-height: 100vh;
+            }
+
+            .typewriter {
+                font-size: 1.25rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-gradient text-white">
-    <header class="py-6 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <h1 class="text-2xl sm:text-3xl font-bold text-gradient">Rishap Parmar</h1>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-8">
-                    <li><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
-                    <li><a href="#experience" class="text-gray-300 hover:text-white transition-colors duration-300">Experience</a></li>
-                    <li><a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
-                    <li><a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a></li>
-                    <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
-                </ul>
-            </nav>
-            <button id="hamburger-btn" class="md:hidden text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
-        </div>
-    </header>
 
-    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-50">
-        <div class="bg-gray-800 w-80 h-full absolute right-0 p-6">
-            <div class="flex justify-end mb-4">
-                <button id="close-menu-btn" class="text-gray-300 focus:outline-none" aria-label="Close Menu">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <nav class="block">
-                <ul class="space-y-4">
-                    <li><a href="#about" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">About</a></li>
-                    <li><a href="#experience" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Experience</a></li>
-                    <li><a href="#projects" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Projects</a></li>
-                    <li><a href="#skills" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Skills</a></li>
-                    <li><a href="#contact" class="block text-lg text-gray-300 hover:text-white transition-colors duration-300">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+<body>
+    <div class="theme-toggle" id="themeToggle">
+        <i class="ri-sun-line ri-lg" id="themeIcon"></i>
     </div>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <section id="about" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">About Me</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="rounded-lg overflow-hidden shadow-lg">
-                    <img src="https://placehold.co/600x400/EEE/31343C" alt="Rishap Parmar" class="w-full h-auto object-cover" />
-                </div>
-                <p class="text-gray-300 leading-relaxed">
-                    Hello! I'm Rishap Parmar, an AI Engineer passionate about developing innovative solutions using cutting-edge technologies. With a strong background in machine learning, deep learning, and data engineering, I strive to create impactful products that solve real-world problems. I have experience in leading AI/ML product development, designing and training complex models, and optimizing data pipelines. I am also experienced in building and guiding collaborative teams, fostering innovation, and mentoring upcoming talents.
-                </p>
+    <div style="position: fixed; z-index: 999; width: 300px; height: 300px;right: 0px;bottom: -60px;">
+        <spline-viewer class="robot-3d z-3" data-aos="fade-left" data-aos-easing="ease-in-sine" data-aos-delay="300"
+            url="https://prod.spline.design/xHbAqkPc2Ksp76cS/scene.splinecode"></spline-viewer>
+    </div>
+    <!-- <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" style="color: var(--text-primary);">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills" style="color: var(--text-primary);">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects" style="color: var(--text-primary);">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" style="color: var(--text-primary);">Contact</a>
+                    </li>
+                </ul>
             </div>
-        </section>
-
-        <section id="experience" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Experience</h2>
-            <div class="space-y-8">
-                <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-pink-400 mb-2">AI/ML Engineer</h3>
-                    <p class="text-gray-400 mb-1">Advicon solution Pvt Ltd, Ahmedabad</p>
-                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
-                        <li>AI/ML Product Development: Oversaw end-to-end development of AI/ML products.</li>
-                        <li>Machine Learning Model Development: Designed, trained, and optimized deep learning and classical ML models.</li>
-                        <li>Data Engineering & Pipeline Optimization: Managed data preprocessing and pipeline optimization.</li>
-                         <li>Team Development & Mentorship: Built and guided a collaborative AI/ML team.</li>
-                        <li>MLOps & Scalable Deployment: Ensured seamless model deployment.</li>
-                        <li>Business & Product Strategy Collaboration: Worked with stakeholders to develop AI solutions.</li>
-                    </ul>
-                </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-pink-400 mb-2">Senior Programming Instructor</h3>
-                    <p class="text-gray-400 mb-1">C-DAC, Ahmedabad, India</p>
-                    <p class="text-gray-300 leading-relaxed">
-                        Taught a wide range of programming languages and guided students in Machine Learning and Artificial Intelligence. Emphasized hands-on learning and real-world applications.
-                    </p>
-                </div>
-                 <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-pink-400 mb-2">Project Based Internship</h3>
-                    <p class="text-gray-400 mb-1">SAC - ISRO, Ahmedabad, India</p>
-                    <p class="text-gray-300 leading-relaxed">
-                       Conducted an analysis of Total Suspended Matter (TSM) in Gujarat's coastal waters using satellite remote sensing datasets.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Projects</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-2">LexiBot</h3>
-                    <p class="text-gray-300 mb-4">
-                        Intelligent document interaction using RAG, NLP, and LLMs.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
-                        <li>End-to-End AI/ML Pipeline</li>
-                        <li>Advanced NLP & Summarization</li>
-                        <li>Retrieval-Augmented Generation (RAG) Optimization</li>
-                        <li>Efficient Search & Indexing</li>
-                        <li>Scalable & Production-Ready Deployment</li>
-                    </ul>
-                </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-2">AgriVision</h3>
-                    <p class="text-gray-300 mb-4">
-                        Deep learning and image processing-based system for real-time identification of plant diseases.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
-                        <li>Image Preprocessing & Augmentation</li>
-                        <li>Disease Detection & Classification</li>
-                        <li>Segmentation & Feature Extraction</li>
-                         <li>Multi-Class Classification</li>
-                        <li>Deployment & Optimization</li>
-                    </ul>
-                </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-2">NeuroScan OCR</h3>
-                    <p class="text-gray-300 mb-4">
-                       Advanced OCR solution for real-time text recognition across scanned documents and images.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
-                        <li>Preprocessing & Image Enhancement</li>
-                        <li>Text Detection & Recognition</li>
-                        <li>Sequence Modeling</li>
-                        <li>Multilingual & Handwriting Recognition</li>
-                        <li>Performance Optimization</li>
-                    </ul>
-                </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-semibold text-blue-400 mb-2">AI-Driven Code Generation and Optimization</h3>
-                    <p class="text-gray-300 mb-4">
-                       Developed an NLP-powered automated code generation and refactoring system using LLMs
-                    </p>
-                    <ul class="list-disc list-inside text-gray-300 leading-relaxed">
-                        <li>Vector Embeddings & Graph Neural Networks (GNNs)</li>
-                        <li>Hidden Markov Models (HMMs), Variational Autoencoders (VAEs)</li>
-                        <li>Reinforcement Learning (DQN, MCTS)</li>
-                        <li>Static & Dynamic Analysis</li>
-                        <li>Seq2Seq models</li>
-                         <li>Performance Optimization</li>
-                    </ul>
+        </div>
+    </nav> -->
+    <main>
+        <section id="home" class="hero-bg min-vh-100 d-flex align-items-center position-relative">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <div class="glass p-5 rounded-3xl">
+                            <h1 class="display-3 fw-bold mb-4 text-white">Rishap Parmar</h1>
+                            <p class="typewriter h4 mb-4 text-white">AI/ML Engineer</p>
+                            <p class="lead mb-5 text-white opacity-75">Crafting digital experiences with modern
+                                technologies and innovative solutions. Passionate about creating scalable applications
+                                that make a difference.</p>
+                            <a href="#skills"
+                                class="btn btn-primary btn-lg !rounded-button px-4 py-3 whitespace-nowrap">Explore My
+                                Skills</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-auto d-flex justify-content-center align-items-center text-center">
+                        <div style="width: auto;">
+                            <img src="images/profile.png" alt="Rishap Parmar" class="img-fluid rounded-3xl shadow-lg mb-4"
+                                style="max-width: 450px; max-height: 450px; object-fit: cover; filter: grayscale(0.2) contrast(1.2) sepia(0.3) brightness(0.8);">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section id="skills" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Skills</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Programming Languages</h4>
-                    <ul class="list-disc list-inside text-gray-300">
-                        <li>Python, R</li>
-                        <li>C, C++, Core Java</li>
-                        <li>JavaScript, Basic HTML/CSS</li>
-                    </ul>
+        <section id="skills" class="py-5" style="background: var(--bg-secondary); min-height: 100vh;">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-4 fw-bold mb-3">Technical Skills</h2>
+                    <p class="lead" style="color: var(--text-secondary);">A comprehensive overview of my technical
+                        expertise and experience</p>
                 </div>
-                <div>
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">AI/ML Technologies</h4>
-                    <ul class="list-disc list-inside text-gray-300">
-                         <li>Artificial Intelligence, Machine Learning, Deep Learning & Advanced Deep Learning, Natural Language Processing</li>
-                        <li>GenAI (LLM, RAG, Agentic AI)</li>
-                        <li>Computer Vision</li>
-                         <li>Image & Video preprocessing using Python module</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">Python Modules</h4>
-                    <ul class="list-disc list-inside text-gray-300">
-                        <li>Numpy, Pandas, Matplotlib. Folium, Seaborn, Plotly, Geopandas</li>
-                        <li>Sklearn, Tensorflow, Keras, Pytorch, NLTK</li>
-                        <li>Database Connection, Beautiful Soup, request ,urllib, Flask, Django</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xl font-semibold text-blue-400 mb-2">BI & Other Tools</h4>
-                    <ul class="list-disc list-inside text-gray-300">
-                        <li>Tableau, Power BI</li>
-                        <li>Git, Weka, Microsoft Office</li>
-                         <li>MySQL, Hadoop, MongoDB, Pig, Hive, PostgreSQL</li>
-                         <li>Mcrosoft Power platform</li>
-                         <li>Basic of Cloud Computing, Networking, Advanced Algorithm, Database Management System, Data Structure, Advanced Mathematics, Statistics, Commercial & Scientific Communication</li>
-                    </ul>
+                <div class="row g-4">
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="skill-card glass p-4 rounded-3xl h-100 hover:scale-105 transition-all duration-300">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="w-12 h-12 flex items-center justify-center bg-primary rounded-full me-3">
+                                    <i class="ri-code-s-slash-line ri-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-0">Programming Languages</h3>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-javascript-line ri-lg text-warning"></i>
+                                        </div>
+                                        <span class="fw-medium">JavaScript</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">5+ years, 20+ projects</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-code-line ri-lg text-info"></i>
+                                        </div>
+                                        <span class="fw-medium">TypeScript</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">3+ years, 15+ projects</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-file-code-line ri-lg text-success"></i>
+                                        </div>
+                                        <span class="fw-medium">Python</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">4+ years, ML & Backend</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-reactjs-line ri-lg text-primary"></i>
+                                        </div>
+                                        <span class="fw-medium">React</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">4+ years, Frontend Expert</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="skill-card glass p-4 rounded-3xl h-100 hover:scale-105 transition-all duration-300">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="w-12 h-12 flex items-center justify-center bg-secondary rounded-full me-3">
+                                    <i class="ri-database-2-line ri-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-0">Data & Machine Learning</h3>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-brain-line ri-lg text-danger"></i>
+                                        </div>
+                                        <span class="fw-medium">TensorFlow</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">2+ years, Deep Learning</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-bar-chart-line ri-lg text-info"></i>
+                                        </div>
+                                        <span class="fw-medium">PyTorch</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">2+ years, Research</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-database-line ri-lg text-success"></i>
+                                        </div>
+                                        <span class="fw-medium">PostgreSQL</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">3+ years, Database Design</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-line-chart-line ri-lg text-warning"></i>
+                                        </div>
+                                        <span class="fw-medium">Pandas</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">3+ years, Data Analysis</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="skill-card glass p-4 rounded-3xl h-100 hover:scale-105 transition-all duration-300">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="w-12 h-12 flex items-center justify-center bg-success rounded-full me-3">
+                                    <i class="ri-eye-line ri-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-0">Computer Vision</h3>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-camera-lens-line ri-lg text-primary"></i>
+                                        </div>
+                                        <span class="fw-medium">OpenCV</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">3+ years, Image Processing</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-scan-line ri-lg text-secondary"></i>
+                                        </div>
+                                        <span class="fw-medium">YOLO</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">2+ years, Object Detection</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-image-line ri-lg text-info"></i>
+                                        </div>
+                                        <span class="fw-medium">PIL/Pillow</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">3+ years, Image Manipulation</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-focus-3-line ri-lg text-danger"></i>
+                                        </div>
+                                        <span class="fw-medium">MediaPipe</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">1+ years, Real-time Processing</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="skill-card glass p-4 rounded-3xl h-100 hover:scale-105 transition-all duration-300">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="w-12 h-12 flex items-center justify-center bg-warning rounded-full me-3">
+                                    <i class="ri-cloud-line ri-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-0">Cloud & DevOps</h3>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-amazon-line ri-lg text-warning"></i>
+                                        </div>
+                                        <span class="fw-medium">AWS</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">3+ years, Cloud Architecture</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-docker-line ri-lg text-info"></i>
+                                        </div>
+                                        <span class="fw-medium">Docker</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">2+ years, Containerization</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-git-branch-line ri-lg text-danger"></i>
+                                        </div>
+                                        <span class="fw-medium">Kubernetes</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">1+ years, Orchestration</small>
+                                </div>
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="w-8 h-8 flex items-center justify-center me-2">
+                                            <i class="ri-terminal-line ri-lg text-success"></i>
+                                        </div>
+                                        <span class="fw-medium">CI/CD</span>
+                                    </div>
+                                    <small style="color: var(--text-secondary);">2+ years, Automation</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section id="contact" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-semibold text-gradient mb-6">Contact</h2>
-            <p class="text-gray-300 text-lg mb-4">
-                Email: rishapparmar360@gmail.com | Phone: 8849638831 | Location: Ahmedabad, Gujarat
-            </p>
-            <p class="text-gray-300 leading-relaxed">
-                I'm always open to discussing new opportunities and collaborations. Feel free to reach out to me!
-            </p>
-            <div class="mt-6">
-                <a href="mailto:rishapparmar360@gmail.com" class="glass-button mr-4">Email Me</a>
-                <a href="tel:8849638831" class="glass-button">Call Me</a>
+        <section id="projects" class="py-5" style="background: var(--bg-primary); min-height: 100vh;">
+            <div class="container">
+                <div class="text-center mb-5" data-aos="fade-up">
+                    <h2 class="display-4 fw-bold mb-3">Featured Projects</h2>
+                    <p class="lead" style="color: var(--text-secondary);">A showcase of my recent work and technical
+                        achievements</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-card glass rounded-3xl overflow-hidden h-100">
+                            <div class="position-relative overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20web%20application%20interface%20with%20clean%20design%2C%20shopping%20cart%2C%20product%20listings%2C%20responsive%20layout%2C%20professional%20UI%2FUX%20design%2C%20blue%20and%20white%20color%20scheme&width=400&height=250&seq=project-1&orientation=landscape"
+                                    alt="E-Commerce Platform" class="w-100 object-top"
+                                    style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="h5 mb-3">AI-Powered E-Commerce Platform</h4>
+                                <p class="mb-3" style="color: var(--text-secondary);">Full-stack e-commerce solution
+                                    with AI-driven product recommendations, real-time inventory management, and advanced
+                                    analytics dashboard.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                    <span class="tech-tag">TensorFlow</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-primary btn-sm !rounded-button whitespace-nowrap">View
+                                        Live</a>
+                                    <a href="#" class="btn btn-glass btn-sm !rounded-button whitespace-nowrap">View
+                                        Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-card glass rounded-3xl overflow-hidden h-100">
+                            <div class="position-relative overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=computer%20vision%20application%20interface%20showing%20real-time%20object%20detection%2C%20camera%20feed%2C%20bounding%20boxes%2C%20AI%20analysis%20dashboard%2C%20modern%20tech%20interface%20design&width=400&height=250&seq=project-2&orientation=landscape"
+                                    alt="Computer Vision App" class="w-100 object-top"
+                                    style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="h5 mb-3">Real-Time Object Detection System</h4>
+                                <p class="mb-3" style="color: var(--text-secondary);">Advanced computer vision
+                                    application using YOLO for real-time object detection and tracking with live video
+                                    stream processing.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">OpenCV</span>
+                                    <span class="tech-tag">YOLO</span>
+                                    <span class="tech-tag">Flask</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-primary btn-sm !rounded-button whitespace-nowrap">View
+                                        Live</a>
+                                    <a href="#" class="btn btn-glass btn-sm !rounded-button whitespace-nowrap">View
+                                        Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-card glass rounded-3xl overflow-hidden h-100">
+                            <div class="position-relative overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=cloud%20infrastructure%20dashboard%20with%20AWS%20services%2C%20monitoring%20charts%2C%20deployment%20pipelines%2C%20DevOps%20tools%20interface%2C%20professional%20blue%20theme&width=400&height=250&seq=project-3&orientation=landscape"
+                                    alt="Cloud Infrastructure" class="w-100 object-top"
+                                    style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="h5 mb-3">Cloud Infrastructure Automation</h4>
+                                <p class="mb-3" style="color: var(--text-secondary);">Scalable cloud infrastructure with
+                                    automated deployment pipelines, monitoring, and cost optimization using AWS
+                                    services.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag">AWS</span>
+                                    <span class="tech-tag">Terraform</span>
+                                    <span class="tech-tag">Docker</span>
+                                    <span class="tech-tag">Kubernetes</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-primary btn-sm !rounded-button whitespace-nowrap">View
+                                        Live</a>
+                                    <a href="#" class="btn btn-glass btn-sm !rounded-button whitespace-nowrap">View
+                                        Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-card glass rounded-3xl overflow-hidden h-100">
+                            <div class="position-relative overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=mobile%20application%20interface%20with%20modern%20design%2C%20social%20features%2C%20chat%20interface%2C%20user%20profiles%2C%20clean%20UI%20design%2C%20gradient%20backgrounds&width=400&height=250&seq=project-4&orientation=landscape"
+                                    alt="Social Media App" class="w-100 object-top"
+                                    style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="h5 mb-3">Social Media Analytics Platform</h4>
+                                <p class="mb-3" style="color: var(--text-secondary);">Comprehensive social media
+                                    management tool with sentiment analysis, engagement tracking, and automated content
+                                    scheduling.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Redis</span>
+                                    <span class="tech-tag">NLP</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-primary btn-sm !rounded-button whitespace-nowrap">View
+                                        Live</a>
+                                    <a href="#" class="btn btn-glass btn-sm !rounded-button whitespace-nowrap">View
+                                        Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                        <div class="project-card glass rounded-3xl overflow-hidden h-100">
+                            <div class="position-relative overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=blockchain%20cryptocurrency%20trading%20interface%20with%20charts%2C%20wallet%20management%2C%20transaction%20history%2C%20modern%20fintech%20design%2C%20dark%20theme%20with%20blue%20accents&width=400&height=250&seq=project-5&orientation=landscape"
+                                    alt="Blockchain App" class="w-100 object-top"
+                                    style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="h5 mb-3">Blockchain Trading Platform</h4>
+                                <p class="mb-3" style="color: var(--text-secondary);">Secure cryptocurrency trading
+                                    platform with real-time market data, portfolio management, and advanced trading
+                                    algorithms.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Web3.js</span>
+                                    <span class="tech-tag">Solidity</span>
+                                    <span class="tech-tag">Node.js</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-primary btn-sm !rounded-button whitespace-nowrap">View
+                                        Live</a>
+                                    <a href="#" class="btn btn-glass btn-sm !rounded-button whitespace-nowrap">View
+                                        Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                        <div class="project-card glass rounded-3xl overflow-hidden h-100">
+                            <div class="position-relative overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=healthcare%20application%20interface%20with%20patient%20data%2C%20medical%20charts%2C%20appointment%20scheduling%2C%20telemedicine%20features%2C%20clean%20medical%20UI%20design&width=400&height=250&seq=project-6&orientation=landscape"
+                                    alt="Healthcare App" class="w-100 object-top"
+                                    style="height: 200px; object-fit: cover;">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="h5 mb-3">AI Healthcare Diagnostics</h4>
+                                <p class="mb-3" style="color: var(--text-secondary);">Medical imaging analysis platform
+                                    using deep learning for early disease detection and diagnostic assistance for
+                                    healthcare professionals.</p>
+                                <div class="d-flex flex-wrap gap-2 mb-3">
+                                    <span class="tech-tag">TensorFlow</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">FastAPI</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <a href="#" class="btn btn-primary btn-sm !rounded-button whitespace-nowrap">View
+                                        Live</a>
+                                    <a href="#" class="btn btn-glass btn-sm !rounded-button whitespace-nowrap">View
+                                        Code</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="py-5" style="background: var(--bg-secondary); min-height: 100vh;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="text-center mb-5" data-aos="fade-up">
+                            <h2 class="display-4 fw-bold mb-3">Get In Touch</h2>
+                            <p class="lead" style="color: var(--text-secondary);">Ready to collaborate on your next
+                                project? Let's discuss how we can work together.</p>
+                        </div>
+                        <div class="glass p-5 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                            <form id="contactForm" novalidate>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label fw-medium">Full Name</label>
+                                        <input type="text" class="form-control form-control-lg !rounded-button"
+                                            id="name" placeholder="Enter your full name" required>
+                                        <div class="invalid-feedback">Please provide a valid name.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label fw-medium">Email Address</label>
+                                        <input type="email" class="form-control form-control-lg !rounded-button"
+                                            id="email" placeholder="Enter your email address" required>
+                                        <div class="invalid-feedback">Please provide a valid email address.</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="message" class="form-label fw-medium">Message</label>
+                                        <textarea class="form-control !rounded-button" id="message" rows="6"
+                                            placeholder="Tell me about your project or how I can help you..."
+                                            required></textarea>
+                                        <div class="invalid-feedback">Please provide a message.</div>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit"
+                                            class="btn btn-primary btn-lg !rounded-button px-5 whitespace-nowrap">
+                                            <i class="ri-send-plane-line me-2"></i>Send Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="formMessage" class="mt-4 text-center" style="display: none;">
+                                <div class="alert alert-success" role="alert">
+                                    <i class="ri-check-circle-line me-2"></i>Thank you for your message! I'll get back
+                                    to you soon.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
-    <footer class="py-4 text-center bg-gray-800 rounded-t-lg shadow-md">
-        <p class="text-gray-400">© 2024 Rishap Parmar. All rights reserved.</p>
+    <footer class="glass py-4 mt-auto">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0" style="color: var(--text-secondary);">&copy; 2025 Rishap Parmar. All rights
+                        reserved.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-md-end justify-content-center gap-3 mt-3 mt-md-0">
+                        <a href="https://github.com" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-github-line ri-lg"></i>
+                        </a>
+                        <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-linkedin-line ri-lg"></i>
+                        </a>
+                        <a href="https://twitter.com" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="ri-twitter-line ri-lg"></i>
+                        </a>
+                        <a href="mailto:alex@example.com" class="social-link">
+                            <i class="ri-mail-line ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-
-    <script>
-        const hamburgerBtn = document.getElementById("hamburger-btn");
-        const mobileMenu = document.getElementById("mobile-menu");
-        const closeMenuBtn = document.getElementById("close-menu-btn");
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-        const navLinks = document.querySelectorAll('.nav-links a');
-        const sections = document.querySelectorAll('section');
-
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle("hidden");
-             document.body.classList.toggle('overflow-hidden');
-        }
-
-        hamburgerBtn.addEventListener("click", toggleMobileMenu);
-        closeMenuBtn.addEventListener("click", toggleMobileMenu);
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener("click", toggleMobileMenu);
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
-                toggleMobileMenu();
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.48/build/spline-viewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script id="theme-toggle">
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = document.getElementById('themeIcon');
+            const body = document.body;
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcon(newTheme);
+            });
+            function updateThemeIcon(theme) {
+                themeIcon.className = theme === 'light' ? 'ri-moon-line ri-lg' : 'ri-sun-line ri-lg';
             }
         });
-
-        function updateActiveNavLink() {
-            let currentSectionId = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 100 && window.scrollY < sectionTop + sectionHeight - 100) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
+    </script>
+    <script id="smooth-scroll">
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('a[href^="#"]');
             navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === currentSectionId) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNavLink);
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });
     </script>
+    <script id="form-validation">
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                const message = document.getElementById('message');
+                let isValid = true;
+                if (!name.value.trim()) {
+                    name.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    name.classList.remove('is-invalid');
+                    name.classList.add('is-valid');
+                }
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email.value.trim() || !emailRegex.test(email.value)) {
+                    email.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    email.classList.remove('is-invalid');
+                    email.classList.add('is-valid');
+                }
+                if (!message.value.trim()) {
+                    message.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    message.classList.remove('is-invalid');
+                    message.classList.add('is-valid');
+                }
+                if (isValid) {
+                    formMessage.style.display = 'block';
+                    form.reset();
+                    form.querySelectorAll('.is-valid').forEach(el => el.classList.remove('is-valid'));
+                    setTimeout(() => {
+                        formMessage.style.display = 'none';
+                    }, 5000);
+                }
+            });
+        });
+    </script>
+    <script id="aos-init">
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                once: true,
+                duration: 600,
+                easing: 'ease-out-cubic',
+                offset: 100
+            });
+        });
+    </script>
 </body>
+
 </html>
